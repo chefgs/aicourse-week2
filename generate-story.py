@@ -15,11 +15,12 @@ prompt = "Once upon a time in a quiet village, a young inventor discovered"
 # Generate story continuation
 result = generator(
     prompt,
-    max_length=150,         # Total length including the prompt
-    num_return_sequences=1, # Number of stories to generate
-    temperature=0.8,        # Creativity vs determinism
-    top_p=0.95,             # Nucleus sampling
-    do_sample=True          # Enables sampling (creative)
+    max_new_tokens=150,         # Number of tokens to generate (not counting prompt)
+    num_return_sequences=1,     # Number of stories to generate
+    temperature=0.8,            # Creativity vs determinism
+    top_p=0.95,                 # Nucleus sampling
+    do_sample=True,             # Enables sampling (creative)
+    pad_token_id=tokenizer.eos_token_id
 )
 
 print("Generated Story:")

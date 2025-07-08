@@ -1,5 +1,6 @@
 import streamlit as st
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
+import os
 
 st.set_page_config(page_title="story teller gpt", layout="wide")
 st.title("Story Teller GPT")
@@ -9,12 +10,13 @@ A GenAI playground to experiment with story generation using various open-source
 **Tip:** This app is designed to help you learn how GenAI text generation works!
 """)
 
+# Silence tokenizer parallelism warning
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+
 # Model options
 MODEL_OPTIONS = [
     "gpt2", "gpt2-medium", "gpt2-large", "gpt2-xl", "distilgpt2",
-    "mosaicml/mpt-7b-storywriter", "facebook/opt-1.3b", "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "meta-llama/Llama-2-7b-chat-hf", "microsoft/phi-2", "tiiuae/falcon-7b-instruct",
-    "deepseek-llm-7b", "deepseek-coder", "mpt-7b", "llama2-7b", "tinyllama"
+    "facebook/opt-1.3b"
 ]
 
 with st.sidebar:
@@ -27,12 +29,41 @@ with st.sidebar:
 - **Top-p:** Controls output diversity. Lower values = more focused, higher = more creative.
 """)
 
+# Helper to check if model is downloaded (checks local cache)
+def is_model_downloaded(model_name):
+    from transformers.utils import cached_file, EntryNotFoundError
+    try:
+        # Try to find config file in cache
+        cached_file(model_name, "config.json")
+        return True
+    except EntryNotFoundError:
+        return False
+
+# Download model UI
+st.subheader("Model Download & Selection")
+download_model = st.selectbox(
+    "Select a model to download:", MODEL_OPTIONS, index=0,
+    help="Download a model before using it for generation."
+)
+download_btn = st.button(f"Download '{download_model}' model")
+if download_btn:
+    with st.spinner(f"Downloading {download_model} ..."):
+        try:
+            AutoTokenizer.from_pretrained(download_model)
+            AutoModelForCausalLM.from_pretrained(download_model)
+            st.success(f"Model '{download_model}' downloaded and cached.")
+        except Exception as e:
+            st.error(f"Failed to download model '{download_model}': {e}")
+
+# List of downloaded models
+cached_models = [m for m in MODEL_OPTIONS if is_model_downloaded(m)]
+
 # Model selection
 selected_models = st.multiselect(
-    "Select one or more models:",
-    options=MODEL_OPTIONS,
-    default=["gpt2"],
-    help="Choose which models to use for story generation."
+    "Select one or more downloaded models:",
+    options=cached_models,
+    default=[m for m in ["gpt2"] if "gpt2" in cached_models],
+    help="Choose which models to use for story generation. Only downloaded models are shown."
 )
 
 # Task selection (for extensibility)
@@ -42,19 +73,35 @@ task = st.selectbox(
     help="Choose the type of generation task. Only text-generation is supported in this demo."
 )
 
+# Prompt suggestions
+PROMPT_SUGGESTIONS = [
+    "Once upon a time in a quiet village, a young inventor discovered",
+    "In the distant future, humanity made its greatest discovery when",
+    "Deep in the enchanted forest, a mysterious light began to glow as"
+]
+
+st.markdown("**Prompt Suggestions:**")
+suggested_prompt = st.selectbox(
+    "Choose a prompt suggestion (or ignore to write your own):",
+    PROMPT_SUGGESTIONS,
+    index=0,
+    help="Select a prompt to auto-fill the prompt box below, or ignore to write your own."
+)
+
 # Prompt input
+def_prompt = suggested_prompt if suggested_prompt else PROMPT_SUGGESTIONS[0]
 prompt = st.text_area(
     "Enter your story prompt:",
-    value="Once upon a time in a quiet village, a young inventor discovered",
+    value=def_prompt,
     help="Type the beginning of your story. The model will continue from here."
 )
 
 # Generation parameters
 col1, col2, col3 = st.columns(3)
 with col1:
-    max_length = st.number_input(
-        "Max Length", min_value=20, max_value=512, value=150,
-        help="Total length of the generated story including your prompt."
+    max_new_tokens = st.number_input(
+        "Max New Tokens", min_value=20, max_value=512, value=150,
+        help="Number of tokens to generate beyond your prompt."
     )
 with col2:
     num_return_sequences = st.number_input(
@@ -76,7 +123,7 @@ generate_btn = st.button("Generate Story")
 
 if generate_btn:
     if not selected_models:
-        st.warning("Please select at least one model.")
+        st.warning("Please select at least one downloaded model.")
     elif not prompt.strip():
         st.warning("Please enter a prompt.")
     else:
@@ -93,11 +140,12 @@ if generate_btn:
                     )
                     results = generator(
                         prompt,
-                        max_length=int(max_length),
+                        max_new_tokens=int(max_new_tokens),
                         num_return_sequences=int(num_return_sequences),
                         temperature=float(temperature),
                         top_p=float(top_p),
-                        do_sample=True
+                        do_sample=True,
+                        pad_token_id=tokenizer.eos_token_id
                     )
                     st.markdown(f"**Model:** `{model_name}`")
                     for idx, res in enumerate(results):
