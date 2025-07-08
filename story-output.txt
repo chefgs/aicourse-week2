@@ -1,0 +1,26 @@
+(.venv) gsaravanan@gs-mac-pro aicourse-week2 % python3.11 llm-getstarted.py  
+tokenizer_config.json: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 26.0/26.0 [00:00<00:00, 28.8kB/s]
+config.json: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 665/665 [00:00<00:00, 4.37MB/s]
+vocab.json: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1.04M/1.04M [00:00<00:00, 1.82MB/s]
+merges.txt: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 456k/456k [00:00<00:00, 531kB/s]
+tokenizer.json: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1.36M/1.36M [00:00<00:00, 5.82MB/s]
+model.safetensors: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 548M/548M [00:41<00:00, 13.3MB/s]
+generation_config.json: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 124/124 [00:00<00:00, 1.07MB/s]
+Device set to use mps:0
+Truncation was not explicitly activated but `max_length` is provided a specific value, please use `truncation=True` to explicitly truncate examples to max length. Defaulting to 'longest_first' truncation strategy. If you encode pairs of sequences (GLUE-style) with the tokenizer you can select this strategy more precisely by providing a specific strategy to `truncation`.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+Both `max_new_tokens` (=256) and `max_length`(=150) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generated Story:
+Once upon a time in a quiet village, a young inventor discovered a unique, simple device that would transform the way in which they interact with the world. But once he had the device, he began to wonder if something even more important had happened.
+
+This book is the product of five years of research, and it offers readers an extraordinary look into the history of the past. It covers the history of the invention of electricity, the rise of the transistor, the development of the Internet, and the emergence of the telephone.
+
+Etiquette and the Meaning of Things
+
+The book is a fascinating look at the ways we treat the past. It does not rely on a certain understanding of the world. It does not pretend to understand what happened. It does not ask us to look to the past for answers. It is a book that will enlighten us about the past.
+
+There is a clear sense of a certain kind of self-giving.
+
+I always thought I was going to be an inventor in a very special way. But to be a self-giving person, you need to have a certain kind of self-esteem. That is why I became a self-giving person.
+
+I am a self-fellow, and I see things from different angles. I feel that there are things
