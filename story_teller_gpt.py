@@ -77,7 +77,9 @@ task = st.selectbox(
 PROMPT_SUGGESTIONS = [
     "Once upon a time in a quiet village, a young inventor discovered",
     "In the distant future, humanity made its greatest discovery when",
-    "Deep in the enchanted forest, a mysterious light began to glow as"
+    "Deep in the enchanted forest, a mysterious light began to glow as",
+    "A group of friends worked together and achieved their dreams, inspiring everyone around them.",
+    "A young artist's kindness transformed their town into a place of joy and hope."
 ]
 
 st.markdown("**Prompt Suggestions:**")
@@ -119,6 +121,9 @@ temperature = st.slider(
     help="Higher values = more creative, lower = more deterministic."
 )
 
+# Option to instruct AI to conclude the story
+conclude_story = st.checkbox("Instruct AI to conclude the story", value=False)
+
 generate_btn = st.button("Generate Story")
 
 if generate_btn:
@@ -128,6 +133,10 @@ if generate_btn:
         st.warning("Please enter a prompt.")
     else:
         st.subheader("Generated Stories:")
+        # Add conclusion instruction if checked
+        final_prompt = prompt
+        if conclude_story:
+            final_prompt += "\n\nEnd the story with a proper conclusion."
         for model_name in selected_models:
             with st.spinner(f"Loading model: {model_name}"):
                 try:
@@ -139,7 +148,7 @@ if generate_btn:
                         tokenizer=tokenizer
                     )
                     results = generator(
-                        prompt,
+                        final_prompt,
                         max_new_tokens=int(max_new_tokens),
                         num_return_sequences=int(num_return_sequences),
                         temperature=float(temperature),
