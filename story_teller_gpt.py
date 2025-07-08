@@ -121,9 +121,6 @@ temperature = st.slider(
     help="Higher values = more creative, lower = more deterministic."
 )
 
-# Option to instruct AI to conclude the story
-conclude_story = st.checkbox("Instruct AI to conclude the story", value=False)
-
 generate_btn = st.button("Generate Story")
 
 if generate_btn:
@@ -133,31 +130,41 @@ if generate_btn:
         st.warning("Please enter a prompt.")
     else:
         st.subheader("Generated Stories:")
-        # Add conclusion instruction if checked
         final_prompt = prompt
-        if conclude_story:
-            final_prompt += "\n\nEnd the story with a proper conclusion."
         for model_name in selected_models:
             with st.spinner(f"Loading model: {model_name}"):
                 try:
                     tokenizer = AutoTokenizer.from_pretrained(model_name)
                     model = AutoModelForCausalLM.from_pretrained(model_name)
-                    generator = pipeline(
-                        task,
-                        model=model,
-                        tokenizer=tokenizer
-                    )
-                    results = generator(
-                        final_prompt,
-                        max_new_tokens=int(max_new_tokens),
-                        num_return_sequences=int(num_return_sequences),
-                        temperature=float(temperature),
-                        top_p=float(top_p),
-                        do_sample=True,
-                        pad_token_id=tokenizer.eos_token_id
-                    )
+                    input_ids = tokenizer.encode(final_prompt, return_tensors='pt')
+                    
+                    # Fix: Create attention_mask only if pad_token_id exists and is not None
+                    attention_mask = None
+                    if hasattr(tokenizer, 'pad_token_id') and tokenizer.pad_token_id is not None:
+                        attention_mask = (input_ids != tokenizer.pad_token_id).long()
+                    
+                    # Add special tokens to better guide the conclusion
+                    eos_token_id = tokenizer.eos_token_id if tokenizer.eos_token_id is not None else None
+                    
+                    # Fix: Only include attention_mask if it's not None
+                    generate_kwargs = {
+                        'input_ids': input_ids,
+                        'max_new_tokens': int(max_new_tokens),
+                        'temperature': float(temperature),
+                        'top_p': float(top_p),
+                        'do_sample': True,
+                        'pad_token_id': tokenizer.eos_token_id,
+                        'num_return_sequences': int(num_return_sequences),
+                        'repetition_penalty': 1.0
+                    }
+                    
+                    if attention_mask is not None:
+                        generate_kwargs['attention_mask'] = attention_mask
+                    
+                    outputs = model.generate(**generate_kwargs)
                     st.markdown(f"**Model:** `{model_name}`")
-                    for idx, res in enumerate(results):
-                        st.success(res['generated_text'])
+                    for idx in range(outputs.shape[0]):
+                        story = tokenizer.decode(outputs[idx], skip_special_tokens=True)
+                        st.success(story)
                 except Exception as e:
                     st.error(f"Error loading or running model `{model_name}`: {e}")
