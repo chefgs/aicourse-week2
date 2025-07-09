@@ -1,0 +1,450 @@
+# RTCFR Prompt Examples
+
+## 1. **Code Development**
+
+---
+
+**Prompt 1:**
+**Role:** Senior JavaScript developer specializing in frontend optimization.
+**Task:** Refactor a React component to improve rendering performance when displaying large lists.
+**Context:** The component currently renders 500+ items and is experiencing lag and slow UI updates during scrolling.
+**Format:**
+
+* Provide the optimized React code using virtualization (e.g., react-window or react-virtualized).
+* Include comments explaining the changes.
+* Add a before/after performance summary.
+  **Reasoning:**
+  Explain why virtualization helps with performance and any trade-offs (e.g., complexity, library dependencies).
+
+---
+
+**Prompt 2:**
+**Role:** Backend engineer with API security expertise.
+**Task:** Write an Express.js middleware to validate JWT tokens for protected routes.
+**Context:** The application uses Auth0 for authentication and serves sensitive user data.
+**Format:**
+
+* Provide the complete middleware code with usage instructions.
+* Explain how to integrate it into an existing Express app.
+  **Reasoning:**
+  Clarify how the middleware improves security, potential pitfalls, and what happens if token validation fails.
+
+---
+
+**Prompt 3:**
+**Role:** DevOps engineer experienced in CI/CD for microservices.
+**Task:** Create a GitLab CI pipeline to automate deployment of a Dockerized Node.js app to AWS ECS.
+**Context:** The project is stored in a GitLab repo and the team uses AWS for hosting.
+**Format:**
+
+* Write the `.gitlab-ci.yml` pipeline file with comments.
+* List any environment variables and AWS IAM roles required.
+  **Reasoning:**
+  Describe the purpose of each pipeline stage and best practices for CI/CD with AWS.
+
+---
+
+**Prompt 4:**
+**Role:** Python developer with focus on data engineering.
+**Task:** Develop a script to extract data from an Excel file, transform date formats, and load into PostgreSQL.
+**Context:** The Excel file comes from a vendor monthly, with inconsistent date fields.
+**Format:**
+
+* Provide the full ETL script with inline comments.
+* Show sample input/output.
+* List required Python packages.
+  **Reasoning:**
+  Explain handling of data inconsistencies and benefits of automating ETL for business reliability.
+
+---
+
+## 2. **Data Summarisation**
+
+---
+
+**Prompt 1:**
+**Role:** Business intelligence analyst for retail.
+**Task:** Summarize sales performance for the last quarter by region and product category.
+**Context:** The company operates in 5 regions with 8 categories, and wants actionable insights for next quarter’s strategy.
+**Format:**
+
+* List top 3 categories and underperforming regions in markdown tables.
+* Highlight 3 notable sales trends.
+  **Reasoning:**
+  Explain how each insight affects inventory and marketing plans.
+
+---
+
+**Prompt 2:**
+**Role:** Healthcare data analyst.
+**Task:** Summarize patient admission data to identify peaks and trends.
+**Context:** Dataset includes department, admission date, discharge date, and diagnosis code.
+**Format:**
+
+* Bullet-point summary of key admission trends.
+* Graph of monthly admissions per department (describe if graph not possible).
+  **Reasoning:**
+  Discuss possible causes of peaks and recommendations for staffing.
+
+---
+
+**Prompt 3:**
+**Role:** Social media analytics expert.
+**Task:** Summarize Twitter campaign results for the past month.
+**Context:** Campaign involved 5 hashtags, targeting 3 demographic groups.
+**Format:**
+
+* Table of hashtag performance (reach, engagement).
+* List top 2 demographic segments by engagement.
+  **Reasoning:**
+  Explain implications for future campaign targeting.
+
+---
+
+**Prompt 4:**
+**Role:** HR data specialist.
+**Task:** Summarize employee training participation rates across departments.
+**Context:** Company ran 4 training programs over 6 months; wants to improve uptake.
+**Format:**
+
+* Bar chart/table of participation by department.
+* List departments with highest and lowest rates.
+  **Reasoning:**
+  Analyze reasons for variance and suggest interventions.
+
+---
+
+## 3. **Tech Support Request**
+
+---
+
+**Prompt 1:**
+**Role:** IT support engineer for enterprise networks.
+**Task:** Diagnose slow internet speed affecting some users in an office.
+**Context:** Multiple users report slowness; others unaffected.
+**Format:**
+
+* Step-by-step troubleshooting checklist.
+* Include commands/tools for network diagnostics.
+  **Reasoning:**
+  Explain logic behind each check and how to identify bottlenecks.
+
+---
+
+**Prompt 2:**
+**Role:** Application support specialist for SaaS products.
+**Task:** Guide a customer who cannot log in after password reset.
+**Context:** User receives reset email but new password is not accepted.
+**Format:**
+
+* List possible causes and solutions in bullets.
+* Give specific steps for user and admin roles.
+  **Reasoning:**
+  Explain why password resets might fail and how to prevent similar issues.
+
+---
+
+**Prompt 3:**
+**Role:** Cloud operations support for Azure.
+**Task:** Troubleshoot failed deployment to Azure App Service.
+**Context:** Deployment pipeline reports “Resource quota exceeded.”
+**Format:**
+
+* List root causes and stepwise resolution.
+* Provide Azure CLI or portal instructions.
+  **Reasoning:**
+  Explain how quotas work in Azure and why they are enforced.
+
+---
+
+**Prompt 4:**
+**Role:** Desktop support technician.
+**Task:** Help user resolve “No audio output device is installed” on Windows 10.
+**Context:** Issue started after recent Windows update.
+**Format:**
+
+* Troubleshooting steps in order, with screenshots if possible.
+* Tips to prevent future driver issues.
+  **Reasoning:**
+  Clarify causes (driver, update conflict) and solution rationale.
+
+---
+
+## 4. **Personality Development**
+
+---
+
+**Prompt 1:**
+**Role:** Leadership coach for early-career managers.
+**Task:** Help a new manager develop active listening skills.
+**Context:** The manager leads a diverse team and wants to build trust.
+**Format:**
+
+* List 3 strategies with real-world scenarios.
+* Suggest daily habit to practice.
+  **Reasoning:**
+  Explain why active listening improves leadership effectiveness.
+
+---
+
+**Prompt 2:**
+**Role:** Productivity coach for remote workers.
+**Task:** Boost focus and minimize distractions during work hours.
+**Context:** User works from home with frequent interruptions.
+**Format:**
+
+* List 4 actionable focus strategies.
+* Provide a daily focus tracker template.
+  **Reasoning:**
+  Describe how each strategy supports sustained attention.
+
+---
+
+**Prompt 3:**
+**Role:** Confidence-building coach.
+**Task:** Guide a professional to overcome imposter syndrome.
+**Context:** User is high-performing but doubts their achievements.
+**Format:**
+
+* 3 actionable tips with self-reflection exercises.
+* List signs of imposter syndrome to watch for.
+  **Reasoning:**
+  Explain the root causes of imposter syndrome and path to confidence.
+
+---
+
+**Prompt 4:**
+**Role:** Mindset trainer for creative professionals.
+**Task:** Help unlock creativity during periods of self-doubt.
+**Context:** Designer struggling with creative block.
+**Format:**
+
+* 3 exercises to stimulate creative thinking.
+* Suggest a daily journaling prompt.
+  **Reasoning:**
+  Explain how each exercise counters negative self-talk.
+
+---
+
+## 5. **Solving Mathematical Problem**
+
+---
+
+**Prompt 1:**
+**Role:** Geometry teacher.
+**Task:** Calculate the area and perimeter of a rectangle with length 7cm and width 3cm.
+**Context:** For 8th grade math homework.
+**Format:**
+
+* Show formula, step-by-step calculation, and final answers.
+* Provide a quick illustration (describe if unable to draw).
+  **Reasoning:**
+  Explain why each formula applies and common mistakes to avoid.
+
+---
+
+**Prompt 2:**
+**Role:** Statistics tutor.
+**Task:** Find the median and mode for the dataset: \[3, 7, 7, 9, 12, 15, 15, 15].
+**Context:** User is preparing for school test on descriptive statistics.
+**Format:**
+
+* Stepwise solution for median and mode.
+* Short summary of what these measures show.
+  **Reasoning:**
+  Describe why median/mode matter for understanding data.
+
+---
+
+**Prompt 3:**
+**Role:** Algebra coach.
+**Task:** Solve for x in the equation: 5x – 3 = 2x + 12.
+**Context:** Middle school student practicing equations.
+**Format:**
+
+* Show each algebraic manipulation step.
+* Recap why each step is necessary.
+  **Reasoning:**
+  Explain how to check the solution and common pitfalls.
+
+---
+
+**Prompt 4:**
+**Role:** Calculus instructor.
+**Task:** Integrate f(x) = x² + 4x + 6.
+**Context:** Student learning basic integration rules.
+**Format:**
+
+* Step-by-step integration and general solution.
+* Explain integration rules used.
+  **Reasoning:**
+  Describe practical application of integration in real-world problems.
+
+---
+
+## 6. **Solving Financial Issues**
+
+---
+
+**Prompt 1:**
+**Role:** Investment advisor.
+**Task:** Suggest a portfolio allocation for a risk-averse client in their 40s.
+**Context:** Client has ₹10 lakh to invest for 10 years and prioritizes capital protection.
+**Format:**
+
+* Pie chart/table with allocation percentages.
+* Brief rationale for each asset class.
+  **Reasoning:**
+  Discuss risk-return profile and inflation impact.
+
+---
+
+**Prompt 2:**
+**Role:** Personal finance educator.
+**Task:** Explain the difference between a savings account and a fixed deposit.
+**Context:** College student starting their first bank account.
+**Format:**
+
+* Comparison table of features (interest, liquidity, risk).
+* List pros and cons of each.
+  **Reasoning:**
+  Explain scenarios where each is suitable.
+
+---
+
+**Prompt 3:**
+**Role:** Small business financial advisor.
+**Task:** Help a shop owner budget for seasonal fluctuations in revenue.
+**Context:** Business has peak sales in summer, slow winters.
+**Format:**
+
+* Simple 12-month cash flow table.
+* 3 tips to manage lean months.
+  **Reasoning:**
+  Explain importance of cash reserves and scenario planning.
+
+---
+
+**Prompt 4:**
+**Role:** Retirement planner.
+**Task:** Calculate monthly savings needed to reach ₹1 crore corpus in 20 years at 8% annual interest.
+**Context:** User is 35, wants to retire at 55.
+**Format:**
+
+* Show formula and stepwise calculation.
+* Present savings plan table.
+  **Reasoning:**
+  Discuss how interest rate and time horizon affect results.
+
+---
+
+## 7. **Solving Mental Health Issues**
+
+---
+
+**Prompt 1:**
+**Role:** Stress management coach.
+**Task:** Teach relaxation techniques for anxiety before public speaking.
+**Context:** User often presents at work and feels anxious before speaking.
+**Format:**
+
+* List 3 techniques (e.g., breathing, visualization).
+* Provide step-by-step instructions.
+  **Reasoning:**
+  Explain how each method calms the nervous system.
+
+---
+
+**Prompt 2:**
+**Role:** Wellness counselor.
+**Task:** Help a remote worker create boundaries for work-life balance.
+**Context:** User works from home and feels work never “switches off.”
+**Format:**
+
+* 4 actionable boundary-setting tips.
+* Example daily work schedule.
+  **Reasoning:**
+  Explain how boundaries prevent burnout.
+
+---
+
+**Prompt 3:**
+**Role:** Grief support specialist.
+**Task:** Advise on healthy ways to process the loss of a pet.
+**Context:** User recently lost a long-time companion animal.
+**Format:**
+
+* List 3 healthy grieving activities.
+* Warning signs that suggest professional help is needed.
+  **Reasoning:**
+  Describe stages of grief and why each activity helps.
+
+---
+
+**Prompt 4:**
+**Role:** Sleep hygiene educator.
+**Task:** Guide a college student with irregular sleep habits to improve sleep quality.
+**Context:** Student stays up late, wakes tired, struggles to focus.
+**Format:**
+
+* 4 tips for better sleep routine.
+* Short checklist for nightly routine.
+  **Reasoning:**
+  Explain the link between routine and sleep quality.
+
+---
+
+## 8. **Solving Personal Health Issues**
+
+---
+
+**Prompt 1:**
+**Role:** Fitness trainer for beginners.
+**Task:** Create a simple 4-week home workout plan for weight loss.
+**Context:** User is new to exercise, wants to lose 5kg, no equipment available.
+**Format:**
+
+* Weekly workout schedule.
+* List warm-up and cool-down exercises.
+  **Reasoning:**
+  Explain importance of gradual progression and safety.
+
+---
+
+**Prompt 2:**
+**Role:** Dietitian for working professionals.
+**Task:** Recommend healthy snack options for busy office hours.
+**Context:** User often skips meals or eats junk food during work.
+**Format:**
+
+* List 5 snack options with nutrition benefits.
+* Sample daily snack schedule.
+  **Reasoning:**
+  Explain why each snack supports energy and satiety.
+
+---
+
+**Prompt 3:**
+**Role:** General practitioner.
+**Task:** Advise on preventing seasonal flu for a family with kids.
+**Context:** Family lives in an urban area with high flu cases in winter.
+**Format:**
+
+* 4 prevention tips (hygiene, vaccination, etc.).
+* Symptoms checklist for early detection.
+  **Reasoning:**
+  Describe how each tip lowers risk of flu.
+
+---
+
+**Prompt 4:**
+**Role:** Ergonomics specialist.
+**Task:** Suggest workspace adjustments for reducing neck and back pain.
+**Context:** User spends long hours at a computer desk.
+**Format:**
+
+* List 5 workspace changes (chair, monitor height, etc.).
+* Quick desk exercise routine.
+  **Reasoning:**
+  Explain how each adjustment improves posture and comfort.
+

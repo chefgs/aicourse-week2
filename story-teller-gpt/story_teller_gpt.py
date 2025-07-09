@@ -165,6 +165,12 @@ if generate_btn:
                     st.markdown(f"**Model:** `{model_name}`")
                     for idx in range(outputs.shape[0]):
                         story = tokenizer.decode(outputs[idx], skip_special_tokens=True)
+                        # Ensure the story ends at the last full stop
+                        story = story.strip()
+                        if not story.endswith('.'):
+                            last_period = story.rfind('.')
+                            if last_period != -1:
+                                story = story[:last_period+1].strip()
                         st.success(story)
                 except Exception as e:
                     st.error(f"Error loading or running model `{model_name}`: {e}")

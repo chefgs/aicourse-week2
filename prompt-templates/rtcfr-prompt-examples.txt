@@ -1,0 +1,207 @@
+# RTCFR Prompting Technique
+
+Role: You are an AI industry analyst.
+
+Task: Provide a comprehensive, up-to-date table comparing open source and closed source GenAI large language models (LLMs).
+
+Context: Include the latest and most widely used models as of 2025, and mention legacy models.
+
+Format: Structure the output as a clear, well-formatted table, split into two sections: open source (downloadable weights) and closed source (API-only, requires credits/payment). For each model, include: name, brief description (with parameter count, publisher, notable features), typical use case(s), real-world example prompt/scenario, and credit requirement.
+
+Reasoning: Select models based on their popularity, relevance in the industry, and public documentation.
+
+---
+
+Role:
+You are a senior business finance advisor with expertise in early-stage SaaS companies. Your client is a SaaS startup in its second year, offering monthly and annual subscription plans. Their revenue is variable due to seasonality, promotions, customer churn, and a few large enterprise deals with irregular payments. They want to expand their engineering and marketing teams next quarter and need stable cash flow for payroll and growth investments. They currently do basic financial tracking but lack formal forecasting or cash buffer practices.
+
+Task: 
+Suggest ways to manage and stabilize cash flow, taking into account their business model and upcoming expansion.
+
+Format:
+
+List 4 actionable strategies in a clear, numbered format.
+
+For each, briefly explain what it involves, give a practical SaaS example, and (if relevant) mention a KPI to track.
+
+After each strategy, add a short paragraph explaining how it improves cash flow stability, and note any trade-offs or risks.
+
+Your advice should be practical and directly relevant to SaaS companies with variable revenue.
+
+---
+
+
+## 1. **Code Development**
+
+**Prompt:**
+You are a senior Python developer specializing in RESTful API integrations and automation scripts.
+
+**Task:**
+Write a Python function that fetches data from a public REST API and stores it in a local SQLite database. The function should handle authentication (using a bearer token), error handling, and data insertion for scalability.
+
+**Context:**
+The target API returns paginated JSON results. The database should store all fields from the API response in a table called `api_data`. Assume a valid bearer token and provide mock API endpoint and token as placeholders. The user wants to understand both the data flow and the implementation details for robust usage.
+
+**Format:**
+
+* Provide the complete Python script with detailed inline comments.
+* Add example input/output and sample usage.
+* Include setup instructions (library requirements, DB creation).
+
+**Reasoning:**
+Explain your design choices for error handling, API pagination, and efficient data insertion. Describe any trade-offs (such as synchronous vs asynchronous requests) and suggest how this pattern can be extended for other APIs.
+
+---
+
+## 2. **Data Summarisation**
+
+**Prompt:**
+You are a data analyst with expertise in sales analytics and reporting.
+
+**Task:**
+Summarize key trends from the following CSV sales dataset.
+
+**Context:**
+The dataset includes daily sales data for the past year, with columns for date, region, product, and revenue. The company operates in 4 regions and offers 20 products. Management wants to identify growth opportunities and underperforming segments.
+
+**Format:**
+
+* Provide a bullet-point summary of the 5 most important trends.
+* Include a markdown table showing the top 5 products by total revenue and the bottom 3 regions by average monthly sales.
+* Briefly describe any significant anomalies or outliers found.
+
+**Reasoning:**
+For each insight or trend, explain why it’s significant for business decision-making and how you identified it (e.g., seasonal spikes, regional drops). Suggest at least one follow-up action for management.
+
+---
+
+## 3. **Tech Support Request**
+
+**Prompt:**
+You are a technical support engineer specializing in cloud infrastructure troubleshooting.
+
+**Task:**
+Help a user resolve a connectivity issue with their AWS EC2 instance.
+
+**Context:**
+The EC2 instance was accessible via SSH yesterday but today SSH connections time out. The security group allows inbound SSH (port 22) from all IPs, and there have been no recent configuration changes according to the user. The instance runs Ubuntu 22.04 and hosts a staging environment.
+
+**Format:**
+
+* Provide a step-by-step troubleshooting checklist.
+* For each step, include the exact commands or AWS Console actions.
+* Add notes on what result to expect and what it indicates.
+
+**Reasoning:**
+For each diagnostic step, explain why it’s necessary and what issue it helps rule out (e.g., networking, instance health, OS-level issues). Point out common pitfalls and recommend preventive actions if the issue is resolved.
+
+---
+
+## 4. **Personality Development**
+
+**Prompt:**
+You are a certified life coach specializing in workplace confidence.
+
+**Task:**
+Guide a young professional to improve self-confidence and communication in meetings.
+
+**Context:**
+The individual is an early-career software developer who hesitates to share ideas during team meetings, despite having valuable input. They want practical ways to build confidence and become more comfortable speaking up.
+
+**Format:**
+
+* List 3 actionable strategies, each with a practical example for software teams.
+* Provide a simple exercise or daily habit to reinforce each strategy.
+* Offer a template for self-reflection after meetings.
+
+**Reasoning:**
+For each strategy, explain the psychology behind it and why it works, referencing real-world workplace dynamics. Suggest how the person can measure progress and avoid common self-doubt traps.
+
+---
+
+## 5. **Solving Mathematical Problem**
+
+**Prompt:**
+You are a mathematics tutor experienced in preparing students for competitive exams.
+
+**Task:**
+Solve the quadratic equation: 2x² – 4x – 6 = 0 and explain the process in simple terms.
+
+**Context:**
+The student is preparing for a college entrance exam and needs a clear step-by-step breakdown using the quadratic formula, with explanation for each step.
+
+**Format:**
+
+* Show each calculation step using the quadratic formula.
+* Present both solutions for x.
+* Include a quick recap of why the quadratic formula is applicable in this case.
+
+**Reasoning:**
+For each step, explain why it’s necessary and how it helps get to the answer. Share a tip on how to check the solution and avoid common mistakes.
+
+---
+
+## 6. **Solving Financial Issues**
+
+**Prompt:**
+You are a personal finance advisor experienced in debt management for young professionals.
+
+**Task:**
+Advise a client on paying off ₹5 lakh credit card debt within 2 years.
+
+**Context:**
+The client has a net monthly income of ₹60,000 and essential expenses of ₹35,000. They want to minimize interest paid and avoid affecting their credit score.
+
+**Format:**
+
+* Provide a monthly payment plan in a table (showing EMI, remaining balance, estimated interest).
+* List 3 cost-saving measures to free up more cash.
+* Suggest a checklist for avoiding new debt during the period.
+
+**Reasoning:**
+For each step or recommendation, explain how it helps achieve the goal, the trade-offs involved, and any risks if steps are skipped.
+
+---
+
+## 7. **Solving Mental Health Issues**
+
+**Prompt:**
+You are a licensed mental health counsellor with experience in remote work-related stress.
+
+**Task:**
+Support a remote worker experiencing anxiety and overwhelm due to frequent deadlines.
+
+**Context:**
+The person works from home, faces constant deadlines, and reports feeling “always on” and struggling to switch off after hours. They have no diagnosed medical conditions but want practical coping mechanisms.
+
+**Format:**
+
+* Suggest 3 practical, evidence-based coping strategies.
+* Provide a daily routine template with work and break periods.
+* List warning signs to seek professional help.
+
+**Reasoning:**
+For each strategy, explain how it works to reduce anxiety, referencing relevant psychological principles. Advise on how to track stress levels and progress.
+
+---
+
+## 8. **Solving Personal Health Issues**
+
+**Prompt:**
+You are a certified nutritionist with experience advising tech professionals.
+
+**Task:**
+Advise a 35-year-old who wants to lose 10 kg safely in 6 months.
+
+**Context:**
+The person works a desk job, has irregular meal timings, and does little physical activity. They are otherwise healthy with no chronic diseases.
+
+**Format:**
+
+* Provide a sample weekly meal plan (breakfast, lunch, dinner, snacks).
+* List 3 lifestyle habits for weight loss (e.g., activity, sleep, hydration).
+* Suggest simple ways to monitor progress.
+
+**Reasoning:**
+For each recommendation, justify it with nutritional science or behavior change principles. Highlight risks of extreme diets and importance of sustainability.
+
